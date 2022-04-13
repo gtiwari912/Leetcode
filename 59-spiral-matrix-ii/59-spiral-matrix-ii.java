@@ -22,7 +22,7 @@ class Solution {
             if(!changed)
                 break;
             changed = false;
-            System.out.println("currentDir:"+curDir);
+            // System.out.println("currentDir:"+curDir);
             arr[curX][curY] = iter++;
             set.add(curX+","+curY);
             

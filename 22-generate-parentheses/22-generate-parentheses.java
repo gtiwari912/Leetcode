@@ -9,10 +9,7 @@ class Solution {
     
     
     private void recurse(Stack<String> stack, int n, StringBuilder sb){
-        if(n==0 && stack.isEmpty()){
-            ans.add(sb.toString());
-            return;
-        }
+ 
         if(stack.isEmpty() && n>0){
             stack.push("(");
             sb.append("(");

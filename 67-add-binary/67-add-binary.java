@@ -5,8 +5,8 @@ class Solution {
             a = b;
             b = temp;
         }
-        System.out.println("a is "+a);
-        System.out.println("b is "+b);
+        // System.out.println("a is "+a);
+        // System.out.println("b is "+b);
         StringBuilder sb  = new StringBuilder();
         int ptr1 = a.length() - 1;
         int ptr2 = b.length() - 1;

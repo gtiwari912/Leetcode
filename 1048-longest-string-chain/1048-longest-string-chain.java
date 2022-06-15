@@ -93,14 +93,4 @@ class Solution {
         memo.put(str, result);
         return result;
     }
-        
-        
-
-    private void sort(String[] arr){
-        Arrays.sort(arr, new Comparator<String>(){
-            public int compare(final String s1, final String s2){
-                return s1.length() - s2.length();
-            }
-        });
-    }
 }

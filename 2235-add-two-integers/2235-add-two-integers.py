@@ -1,3 +1,1 @@
-class Solution:
-    sum = add
-        
+class Solution: sum = add

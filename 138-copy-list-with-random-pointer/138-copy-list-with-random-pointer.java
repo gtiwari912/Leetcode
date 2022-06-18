@@ -30,17 +30,17 @@ class Solution {
             
         }
         Node cur = head;
-        while(cur!=null){
-            System.out.print(cur.val + "->");
-            cur = cur.next;
-        }
+        // while(cur!=null){
+        //     System.out.print(cur.val + "->");
+        //     cur = cur.next;
+        // }
         back = head;
         while(back != null){
             if(back.random != null)
                 back.next.random = back.random.next; 
             back = back.next.next;
         }
-        System.out.println("Reached here");
+        // System.out.println("Reached here");
         Node ans = head.next;
         
         back = head;

@@ -16,7 +16,7 @@ class Solution {
             reverse(nums, 0, n-1);
             return;
         }
-        System.out.println("First Smaller index:"+firstSmallerIndex);
+        // System.out.println("First Smaller index:"+firstSmallerIndex);
         
         int firstGreaterIndex = 0;
         int greaterEle = Integer.MAX_VALUE;
@@ -27,7 +27,7 @@ class Solution {
                 firstGreaterIndex = i;
             }
         }
-        System.out.println("First greater index: "+firstGreaterIndex);
+        // System.out.println("First greater index: "+firstGreaterIndex);
         
         swap(nums, firstGreaterIndex, firstSmallerIndex);
         reverse(nums, firstSmallerIndex+1, n-1);

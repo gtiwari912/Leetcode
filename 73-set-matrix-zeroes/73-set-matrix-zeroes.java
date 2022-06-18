@@ -1,38 +1,62 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        int R = matrix.length;
-        int C = matrix[0].length;
-        boolean firstRow = false;
-        boolean firstCol = false;
-        for(int i = 0; i<R; i++){
-            for(int j =0; j<C; j++){
-                if(matrix[i][j] == 0){
-                    if(i==0) firstRow = true;
-                    if(j==0) firstCol = true;
-                    matrix[0][j] = 0;
-                    matrix[i][0] = 0;
+        boolean isFirstRowZero = false;
+        int m =  matrix.length;
+        int n = matrix[0].length;
+        for(int i = 0; i<m; i++){
+            for(int j = 0; j<n; j++){
+                if(matrix[i][j]==0){
+                    if(i==0){
+                        isFirstRowZero=true;
+                        // matrix[0][j] = 0;
+                    }
+                    else{
+                        matrix[i][0] = 0;
+                        matrix[0][j] = 0;
+                    }
                 }
             }
         }
-        
-        
-        for(int i = 1; i<R; i++){
-            for(int j = 1; j<C; j++){
-                if(matrix[i][0]==0 || matrix[0][j]==0){
-                    matrix[i][j] = 0;
-                }
+        Stack<Integer> stack = new Stack<>();
+        //going for cols;
+        for(int i = 0; i<n; i++){
+            if(matrix[0][i]==0){
+                stack.add(-i);
             }
         }
         
-        if(firstRow){
-            for(int i =0; i<C; i++)
-                matrix[0][i] = 0;
+        //going for row;
+        if(isFirstRowZero)
+            stack.add(201);
+        for(int i=1; i<m; i++){
+            if(matrix[i][0] == 0)
+                stack.add(i);
         }
         
-        if(firstCol){
-            for(int i=0; i<R; i++){
-                matrix[i][0] = 0;
+        while(!stack.isEmpty()){
+            int cur = stack.pop();
+            if(cur==201){
+                setRowZero(matrix, 0);
             }
+            else if(cur>0){
+                setRowZero(matrix, cur);
+            }
+            else{
+                setColZero(matrix, -cur);
+            }
+        }
+    }
+    
+    
+    private void setRowZero(int[][] matrix, int row){
+        for(int i= 0; i<matrix[0].length; i++){
+            matrix[row][i] = 0;
+        }
+    }
+    
+    private void setColZero(int[][] matrix, int col){
+        for(int i = 0; i<matrix.length; i++){
+            matrix[i][col] = 0;
         }
     }
 }

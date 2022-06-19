@@ -6,8 +6,8 @@ class Solution {
             }
         }
         
-        for(int[] arr: matrix)
-            System.out.println(Arrays.toString(arr));
+        // for(int[] arr: matrix)
+        //     System.out.println(Arrays.toString(arr));
         
         for(int i = 0; i<matrix.length; i++)
             reverse(matrix, i);

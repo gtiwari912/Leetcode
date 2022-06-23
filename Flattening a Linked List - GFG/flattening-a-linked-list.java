@@ -120,34 +120,43 @@ class GfG
 {
     Node flatten(Node root)
     {
-	// Your code here
-	   // System.out.println("Hello");
-    	List<Node> list = new ArrayList<>();
-    	Node cur = root;
-    	while(cur != null){
-    	    Node now = cur;
-    	    while(now != null){
-    	        list.add(now);
-    	        now = now.bottom;
-    	    }
-    	    cur = cur.next;
-    	}
-    // 	System.out.println("List size is "+list.size());
-    	Collections.sort(list, (a,b)->a.data - b.data);
-    // 	print(list);
-    	Node dummy = new Node(0);
-    	cur = dummy;
-    	for(Node ab: list){
-    	    cur.bottom = new Node(ab.data);
-    	    cur = cur.bottom;
-    	}
-    	
-    	return dummy.bottom;
+        if(root.next == null)
+            return root;
+        Node next = flatten(root.next);
+        return merge(root, next);
     }
     
-    private void print(List<Node> list){
-        for(Node cur: list){
-            System.out.print(cur.data+"->");
+    
+    private Node merge(Node a, Node b){
+        Node p1 = a;
+        Node p2 = b;
+        Node ans = new Node(-1);
+        Node cur = ans;
+        while(p1!=null || p2!=null){
+            if(p1!=null && p2!=null){
+                if(p1.data < p2.data){
+                    cur.bottom = p1;
+                    p1 = p1.bottom;
+                }
+                else{
+                    cur.bottom = p2;
+                    p2 = p2.bottom;
+                }
+                cur = cur.bottom;
+                continue;
+            }
+            if(p1 != null){
+                cur.bottom = p1;
+                p1 = p1.bottom;
+                cur = cur.bottom;
+            }
+            if(p2 != null){
+                cur.bottom = p2;
+                p2 = p2.bottom;
+                cur = cur.bottom;
+            }
         }
+        
+        return ans.bottom;
     }
 }

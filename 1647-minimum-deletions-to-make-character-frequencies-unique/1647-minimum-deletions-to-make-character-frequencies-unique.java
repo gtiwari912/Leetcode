@@ -12,8 +12,8 @@ class Solution {
             }
             freqMap.get(val).add(key);
         }
-        System.out.println("map: "+map);
-        System.out.println("freqMap: "+freqMap);
+        // System.out.println("map: "+map);
+        // System.out.println("freqMap: "+freqMap);
         ArrayList<Integer> arr = new ArrayList<>();
         HashSet<Integer> set = new HashSet<>();
         for(int key: freqMap.keySet()){

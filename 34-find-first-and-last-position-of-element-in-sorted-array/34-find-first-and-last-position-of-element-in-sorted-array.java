@@ -20,14 +20,20 @@ class Solution {
     }
     
     private int findFirst(int[] nums, int left, int right, int target){
+        if(right<left)
+            return -1;
         if(left==right){
             if(nums[right] == target)
                 return right;
             return -1;
         }
         int mid = (left+right)/2;
-        if(nums[mid]>=target){
+        System.out.println("FF l:"+left+" r:"+right+" m:"+mid);
+        if(nums[mid]==target){
             return findFirst(nums, left, mid, target);
+        }
+        else if(nums[mid]>target){
+            return findFirst(nums, left, mid-1, target);
         }
         else{
             return findFirst(nums, mid+1, right, target);

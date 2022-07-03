@@ -25,13 +25,15 @@ class Solution {
         }
         
         for(long k: inactive){
-            count = (count + k);
+            count = count + k;
         }
         for(long k: active){
-            count = (count + k);
+            count = count + k;
         }
 
         
-        return (int)(count%mod);
+        int ans = (int)(count % mod);
+        return ans;
+
     }
 }

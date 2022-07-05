@@ -27,7 +27,7 @@ class Solution {
         if(low>high){
             return Integer.MAX_VALUE;
         }
-        System.out.println("Searching:"+target+" l:"+low+" h:"+high);
+        // System.out.println("Searching:"+target+" l:"+low+" h:"+high);
         int start = low;
         while(low<=high){
             int mid = (low+high)/2;
@@ -44,7 +44,7 @@ class Solution {
         }
         if(low>=nums.length)
             return Integer.MAX_VALUE;
-        System.out.println("Got at :"+low);
+        // System.out.println("Got at :"+low);
         
         return low -start + 1;
     }

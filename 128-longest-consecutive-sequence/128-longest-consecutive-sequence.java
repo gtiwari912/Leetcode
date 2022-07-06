@@ -8,13 +8,12 @@ class Solution {
         for(int i: nums){
             if(!set.contains(i-1)){
                 int cur = i+1;
-                curStreak++;
+                curStreak = 1;
                 while(set.contains(cur)){
                     cur++;
                     curStreak++;
                 }
                 longestStreak = Math.max(curStreak, longestStreak);
-                curStreak = 0;
             }
         }
         

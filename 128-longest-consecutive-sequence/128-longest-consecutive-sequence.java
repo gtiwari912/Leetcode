@@ -7,7 +7,8 @@ class Solution {
         int curStreak = 0;
         for(int i: nums){
             if(!set.contains(i-1)){
-                int cur = i;
+                int cur = i+1;
+                curStreak++;
                 while(set.contains(cur)){
                     cur++;
                     curStreak++;

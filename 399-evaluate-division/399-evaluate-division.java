@@ -42,7 +42,7 @@ class Solution {
                     return ans;
             }
         }
-        // visited.remove(from);
+        visited.remove(from);
         return -1;
     }
 }

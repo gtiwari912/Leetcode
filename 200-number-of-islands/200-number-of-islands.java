@@ -1,32 +1,23 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        HashSet<String> visited = new HashSet<>();
         int m = grid.length;
         int n = grid[0].length;
+        int[][] dir = {{1,0}, {-1,0}, {0,1}, {0,-1}};
         UnionFind uf = new UnionFind(grid);
+        // System.out.println(uf.components());
         for(int i = 0; i<m; i++){
             for(int j = 0; j<n; j++){
-                // String str = i+","+j;
-                int cur = grid[i][j];
-                if(cur=='1'){
-                    // System.out.println("IN Loop for: "+i+","+j);
-                    // visited.contains(str)
-                        // continue;
-                    // visited.add(str);
-                    
-                    if(i-1>=0 && grid[i-1][j]=='1'){
-                        uf.union(i*n+j, (i-1)*n+j);
+                if(grid[i][j] == '1'){
+                    int idx = i*n+j;
+                    for(int[] arr: dir){
+                        int x = i+arr[0];
+                        int y = j+arr[1];
+                        if(x>=0 && x<m && y>=0 && y<n && grid[x][y] == '1'){
+                            // System.out.println("Doing union");
+                            int newIdx = x*n+y;
+                            uf.union(idx, newIdx);
+                        }
                     }
-                    if(i+1<m && grid[i+1][j] == '1'){
-                        uf.union(i*n+j, (i+1)*n+j);
-                    }
-                    if(j-1>=0 && grid[i][j-1]=='1'){
-                        uf.union(i*n+j, i*n+(j-1));
-                    }
-                    if(j+1<n && grid[i][j+1]=='1'){
-                        uf.union(i*n+j, i*n+(j+1));
-                    }
-                    
                 }
             }
         }
@@ -35,6 +26,7 @@ class Solution {
     }
 }
 
+
 class UnionFind{
     int num;
     int numComponents;
@@ -42,22 +34,27 @@ class UnionFind{
     int[] parent;
 
     UnionFind(char[][] grid){
-        // num = n; 
-        numComponents = 0;
-        int m = grid.length;
-        int n = grid[0].length;
+        // num = n; numComponents = n;
+        // rank = new int[n];
+        // Arrays.fill(rank, 0);
+        // parent = new int[n];
+        // for(int i = 0; i<n; i++)
+            // parent[i] = i;
+        int n = grid.length; 
+        int m = grid[0].length;
         parent = new int[n*m];
-        rank = new int[n*m];
-        Arrays.fill(rank, 0);
-        for(int i = 0; i<m; i++){
-            for(int j=0; j<n; j++){
+        for(int i=0; i<n;i++){
+            for(int j = 0; j<m; j++){
                 if(grid[i][j] == '1'){
+                    int idx = i*m + j;
+                    parent[idx] = idx;
                     numComponents++;
-                    parent[i*n + j] = i*n+j;
                 }
             }
         }
-        // System.out.println(Arrays.toString(parent));
+        num = numComponents;
+        rank = new int[m*n];
+        Arrays.fill(rank, 0);
     }
     
     int size(){return num;}

@@ -1,20 +1,21 @@
-class Solution {
-    int[][] memo;
+public class Solution {
     public int uniquePaths(int m, int n) {
-        memo = new int[m][n];
-        return recurse(0, 0, m-1, n-1);
-    }
-    
-    private int recurse(int i, int j, int targetRow, int targetCol){
-        if(i==targetRow || j==targetCol)
+        if(m == 1 || n == 1)
             return 1;
-        
-        if(memo[i][j] != 0)
-            return memo[i][j];
-        int left = recurse(i, j+1, targetRow, targetCol);
-        int down = recurse(i+1, j, targetRow, targetCol);
-        int ans = left+down;
-        memo[i][j] = ans;
-        return ans;
+        m--;
+        n--;
+        if(m < n) {              // Swap, so that m is the bigger number
+            m = m + n;
+            n = m - n;
+            m = m - n;
+        }
+        long res = 1;
+        int j = 1;
+        for(int i = m+1; i <= m+n; i++, j++){       // Instead of taking factorial, keep on multiply & divide
+            res *= i;
+            res /= j;
+        }
+            
+        return (int)res;
     }
 }

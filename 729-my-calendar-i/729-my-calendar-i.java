@@ -1,26 +1,18 @@
 class MyCalendar {
-    ArrayList<int[]> bookings;
-    public MyCalendar() {
-        bookings = new ArrayList<>();
+    TreeMap<Integer, Integer> calendar;
+
+    MyCalendar() {
+        calendar = new TreeMap();
     }
-    
+
     public boolean book(int start, int end) {
-        for(int[] zone: bookings){
-            // System.out.println("Comparing s:"+start+" e:"+end+" with "+Arrays.toString(zone));
-            if(start<zone[1] && end>zone[0]) {
-                // int[] newArr = {start, end};
-                // bookings.add(newArr);
-                return false;
-            }
+        Integer prev = calendar.floorKey(start),
+                next = calendar.ceilingKey(start);
+        if ((prev == null || calendar.get(prev) <= start) &&
+                (next == null || end <= next)) {
+            calendar.put(start, end);
+            return true;
         }
-        int[] newArr = {start, end};
-        bookings.add(newArr);
-        return true;
+        return false;
     }
 }
-
-/**
- * Your MyCalendar object will be instantiated and called as such:
- * MyCalendar obj = new MyCalendar();
- * boolean param_1 = obj.book(start,end);
- */

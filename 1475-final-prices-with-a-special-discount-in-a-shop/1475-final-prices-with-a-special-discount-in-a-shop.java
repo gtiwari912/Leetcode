@@ -1,3 +1,4 @@
+// NEXT SMALLER ELEMENT;
 class Solution {
     public int[] finalPrices(int[] prices) {
         int n = prices.length;

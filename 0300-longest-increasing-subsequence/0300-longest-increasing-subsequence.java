@@ -13,7 +13,7 @@ class Solution {
                 // dp[i] = Math.max(dp[i], dp[j]);
             }
         }
-        System.out.println(Arrays.toString(dp));
+        // System.out.println(Arrays.toString(dp));
         int ans = 1;
         for(int i: dp) ans = Math.max(i, ans);
         return ans;

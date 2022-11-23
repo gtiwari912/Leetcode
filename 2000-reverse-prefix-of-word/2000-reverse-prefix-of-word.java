@@ -1,6 +1,13 @@
 class Solution {
     public String reversePrefix(String word, char ch) {
-        int firstOccourence = word.indexOf(ch+"");
+        int firstOccourence = -1;
+        for(int i = 0; i<word.length(); i++){
+            char curChar = word.charAt(i);
+            if(curChar == ch){
+                firstOccourence = i;
+                break;
+            }
+        }
         if(firstOccourence == -1) return word;
         char[] arr = word.toCharArray();
         reverse(arr, 0, firstOccourence);

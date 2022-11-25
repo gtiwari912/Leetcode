@@ -3,8 +3,7 @@ class Solution {
         int lastIndex = -1;
         for(int i = num.length()-1; i>=0; i--){
             char curChar = num.charAt(i);
-            int a = curChar -'0';
-            if(a%2==1){
+            if(curChar =='1' || curChar=='3' || curChar=='5' || curChar=='7' || curChar=='9'){
                 lastIndex = i;
                 break;
             }

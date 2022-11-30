@@ -15,11 +15,6 @@ class Solution {
                     canReach[target] = true;
                     break;
                 }
-//                 else{
-//                     System.out.println("returning on Index "+target);
-//                     return false;
-                    
-//                 }
             }
             if(canReach[i]==false) return false;
         }

@@ -32,7 +32,7 @@ class Solution {
                 stack.add(num);
             }
         }
-        System.out.println(stack);
+        // System.out.println(stack);
         return stack.pop();
     }
 }

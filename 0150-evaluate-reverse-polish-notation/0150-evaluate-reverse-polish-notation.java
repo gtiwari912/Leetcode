@@ -7,25 +7,25 @@ class Solution {
                 int one = stack.pop();
                 int two = stack.pop();
                 stack.add(one+two);
-                System.out.println("adding "+one+" and "+two);
+                // System.out.println("adding "+one+" and "+two);
             }
             else if(str.equals("-")){
                 int one = stack.pop();
                 int two = stack.pop();
                 stack.add(two-one);
-                System.out.println("Subtracting "+one+" and "+two);
+                // System.out.println("Subtracting "+one+" and "+two);
             }
             else if(str.equals("/")){
                 int one = stack.pop();
                 int two = stack.pop();
                 stack.add(two/one);
-                System.out.println("Dividing "+one+" and "+two);
+                // System.out.println("Dividing "+one+" and "+two);
             }
             else if(str.equals("*")){
                 int one = stack.pop();
                 int two = stack.pop();
                 stack.add(one*two);
-                System.out.println("Multiplying "+one+" and "+two);
+                // System.out.println("Multiplying "+one+" and "+two);
             }
             else{
                 int num = Integer.parseInt(str);

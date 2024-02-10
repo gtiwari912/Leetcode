@@ -4,7 +4,7 @@ class Solution {
         for(int i : nums) map.put(i, map.getOrDefault(i,0)+1);
         int[][] arr = new int[map.size()][2];
         int idx = 0;
-        System.out.println(map.size());
+        // System.out.println(map.size());
         for(int key: map.keySet()){
             arr[idx] = new int[2];
             arr[idx][0]= key;

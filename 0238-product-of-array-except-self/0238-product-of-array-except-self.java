@@ -13,6 +13,7 @@ class Solution {
             output[i] = output[i] * product;
             product = product * nums[i];
         }
+        System.gc();
         return output;
     }
     
